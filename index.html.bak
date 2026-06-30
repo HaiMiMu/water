@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦫 卡皮巴拉喝水小助手 - 使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'SimHei', sans-serif;
+            background-color: #FAF3E8;
+            color: #5C4033;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            border-bottom: 2px solid #E8D5C4;
+            margin-bottom: 40px;
+        }
+        
+        .pet-icon {
+            font-size: 72px;
+            display: block;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            color: #8B6F47;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #C4A77D;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #7EC8C8;
+            color: #FFFFFF;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+        
+        .section {
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 2px solid #E8D5C4;
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        
+        .section h2 {
+            font-size: 24px;
+            color: #8B6F47;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E8D5C4;
+        }
+        
+        .section h3 {
+            font-size: 18px;
+            color: #5C4033;
+            margin: 20px 0 12px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .feature-card {
+            background: #FDF8F3;
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid #E8D5C4;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #D4A373;
+            transform: translateY(-2px);
+        }
+        
+        .feature-card .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card h4 {
+            font-size: 16px;
+            color: #5C4033;
+            margin-bottom: 6px;
+        }
+        
+        .feature-card p {
+            font-size: 14px;
+            color: #8B6F47;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .tech-tag {
+            background: #E8D5C4;
+            color: #5C4033;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background: #2B2B2B;
+            color: #E8D5C4;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-block .comment {
+            color: #6A9955;
+        }
+        
+        .code-block .keyword {
+            color: #569CD6;
+        }
+        
+        .code-block .string {
+            color: #CE9178;
+        }
+        
+        .step-list {
+            list-style: none;
+            counter-reset: step;
+        }
+        
+        .step-list li {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+            padding-top: 4px;
+        }
+        
+        .step-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #7EC8C8;
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: #FDF8F3;
+            border-left: 4px solid #7EC8C8;
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 16px 0;
+        }
+        
+        .highlight-box.warning {
+            border-left-color: #FFD6A5;
+        }
+        
+        .highlight-box.info {
+            border-left-color: #A0C4FF;
+        }
+        
+        .highlight-box.success {
+            border-left-color: #95D5B2;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E8D5C4;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: #5C4033;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .faq-answer {
+            color: #8B6F47;
+            font-size: 14px;
+            padding-left: 8px;
+        }
+        
+        .screenshot-container {
+            margin: 16px 0;
+        }
+        
+        .screenshot-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border: 2px solid #E8D5C4;
+            display: block;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+        
+        .screenshot-grid .screenshot-container {
+            margin: 0;
+        }
+        
+        .screenshot-placeholder {
+            background: #F0E8E0;
+            border: 2px dashed #C4A77D;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #C4A77D;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+        
+        .screenshot-info {
+            background: #FDF8F3;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-top: 8px;
+            font-size: 13px;
+            color: #8B6F47;
+            border: 1px solid #E8D5C4;
+        }
+        
+        .system-req {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .req-item {
+            background: #FDF8F3;
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid #E8D5C4;
+            text-align: center;
+        }
+        
+        .req-item .req-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+        
+        .req-item .req-label {
+            font-size: 13px;
+            color: #C4A77D;
+            margin-bottom: 4px;
+        }
+        
+        .req-item .req-value {
+            font-size: 15px;
+            font-weight: bold;
+            color: #5C4033;
+        }
+        
+        .download-area {
+            background: #FDF8F3;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: 2px dashed #7EC8C8;
+            margin: 16px 0;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #7EC8C8;
+            color: #FFFFFF;
+            padding: 12px 32px;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        .download-btn:hover {
+            background: #5BA8A8;
+            transform: translateY(-2px);
+        }
+        
+        .file-info {
+            font-size: 13px;
+            color: #8B6F47;
+            margin-top: 10px;
+        }
+        
+        .replace-guide {
+            background: #FFF8F0;
+            border: 2px solid #FFD6A5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+        
+        .replace-guide h4 {
+            color: #8B6F47;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .replace-guide ol {
+            padding-left: 20px;
+            color: #5C4033;
+            font-size: 14px;
+            line-height: 2;
+        }
+        
+        .replace-guide code {
+            background: #F0E8E0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #C4A77D;
+            font-size: 14px;
+        }
+        
+        .footer-pet {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+            .section {
+                padding: 20px 16px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .system-req {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="pet-icon">🦫</span>
+            <h1>卡皮巴拉喝水小助手</h1>
+            <p class="subtitle">一个温柔提醒你喝水的桌面小工具</p>
+            <span class="badge">v1.0</span>
+        </header>
+
+        <!-- 下载区域 -->
+        <div class="section">
+            <h2>⬇️ 下载</h2>
+            <div class="download-area">
+                <div style="font-size: 48px; margin-bottom: 12px;">💧</div>
+                <p style="font-size: 16px; color: #5C4033; margin-bottom: 8px;">
+                    <strong>卡皮巴拉-喝水小助手.exe</strong>
+                </p>
+                <p style="font-size: 14px; color: #8B6F47;">
+                    无需安装，双击即可运行
+                </p>
+                <a href="卡皮巴拉-喝水小助手.exe" class="download-btn">立即下载</a>
+                <div class="file-info">
+                    约 43 MB | Windows 10/11 64位
+                </div>
+            </div>
+            <div class="highlight-box info">
+                <strong>💡 温馨提示：</strong>下载后建议将 EXE 文件放在固定位置（如桌面或 D 盘），然后创建快捷方式到桌面。程序数据会自动保存在用户目录，不用担心丢失。
+            </div>
+        </div>
+
+        <!-- 功能介绍 -->
+        <div class="section">
+            <h2>📋 功能介绍</h2>
+            <p>卡皮巴拉喝水小助手是一款 Windows 桌面应用程序，以可爱的卡皮巴拉为主题，帮助你养成每天喝水的好习惯。</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🦫</div>
+                    <h4>卡皮巴拉心情</h4>
+                    <p>根据喝水进度变化：今天还没喝水呢~ / 还能坚持！ / 咕噜咕噜好满足！</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏰</div>
+                    <h4>定时提醒</h4>
+                    <p>可自定义 15/30/45/60 分钟提醒间隔，温柔弹出喝水提醒</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💧</div>
+                    <h4>快速记录</h4>
+                    <p>100/250/500/1000ml 快速按钮 + 自定义水量，一键记录</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h4>进度追踪</h4>
+                    <p>实时显示今日喝水进度，支持自定义每日目标（默认 2000ml）</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔥</div>
+                    <h4>连续打卡</h4>
+                    <p>记录连续达成目标的天数，激励你保持好习惯</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📅</div>
+                    <h4>日历热力图</h4>
+                    <p>按月查看喝水记录，颜色深浅表示水量，达标显示 🏆 徽章</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌙</div>
+                    <h4>深色主题</h4>
+                    <p>一键切换浅色/深色模式，保护眼睛</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🖥️</div>
+                    <h4>系统托盘</h4>
+                    <p>最小化到托盘，右键快速记录 + 查看进度</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔄</div>
+                    <h4>开机自启</h4>
+                    <p>支持设置随 Windows 启动，自动开始提醒</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">✋</div>
+                    <h4>可拖动位置</h4>
+                    <p>主窗口可以自由拖动到屏幕任意位置，记住你的习惯位置</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 系统要求 -->
+        <div class="section">
+            <h2>🖥️ 系统要求</h2>
+            <div class="system-req">
+                <div class="req-item">
+                    <div class="req-icon">🪟</div>
+                    <div class="req-label">操作系统</div>
+                    <div class="req-value">Windows 10 / 11</div>
+                </div>
+                <div class="req-item">
+                    <div class="req-icon">💻</div>
+                    <div class="req-label">架构</div>
+                    <div class="req-value">64位</div>
+                </div>
+                <div class="req-item">
+                    <div class="req-icon">💾</div>
+                    <div class="req-label">存储空间</div>
+                    <div class="req-value">约 50 MB</div>
+                </div>
+                <div class="req-item">
+                    <div class="req-icon">📦</div>
+                    <div class="req-label">依赖</div>
+                    <div class="req-value">无需安装</div>
+                </div>
+            </div>
+            <div class="highlight-box info" style="margin-top: 16px;">
+                <strong>✨ 免安装运行：</strong>单个 EXE 文件，包含所有依赖（Python 解释器、PyQt5 等），无需额外安装任何东西。
+            </div>
+        </div>
+
+        <!-- 使用指南 -->
+        <div class="section">
+            <h2>🚀 使用指南</h2>
+            <ol class="step-list">
+                <li>
+                    <strong>下载运行</strong><br>
+                    双击 <code>卡皮巴拉-喝水小助手.exe</code> 即可运行，无需安装 Python 或任何依赖。
+                </li>
+                <li>
+                    <strong>记录喝水</strong><br>
+                    在主窗口点击 100/250/500/1000ml 快速按钮，或输入自定义水量后点击"记录"。记录后进度条会有水位上升动画，卡皮巴拉心情也会变化！
+                </li>
+                <li>
+                    <strong>设置提醒间隔 & 目标</strong><br>
+                    点击 📋 展开详细面板，选择 15/30/45/60 分钟提醒间隔。点击 🎯 展开目标面板，设置每日喝水目标（默认 2000ml）。点击 🌙 可切换深色主题。
+                </li>
+                <li>
+                    <strong>应对提醒</strong><br>
+                    提醒弹窗会温柔弹出，显示"上次提醒已过去 X 分钟"。可以直接点击快速按钮记录，或点击"待会再喝"延后 5 分钟。
+                </li>
+                <li>
+                    <strong>查看历史</strong><br>
+                    右键托盘图标 → 选择"📅 历史记录"打开日历热力图。点击任意日期可查看柱状图时间分布和详细记录列表。达标日期显示 🏆 徽章。
+                </li>
+                <li>
+                    <strong>删除记录</strong><br>
+                    在详细面板的今日记录中点击 ❌ 删除单条记录，或在日历详情弹窗中删除历史记录。
+                </li>
+                <li>
+                    <strong>拖动位置</strong><br>
+                    鼠标按住主窗口任意位置拖动到屏幕任意角落，松开后记住位置，下次打开仍在原位。
+                </li>
+                <li>
+                    <strong>开机自启</strong><br>
+                    右键托盘图标 → 勾选"🔄 开机自启动"，下次开机自动运行。
+                </li>
+            </ol>
+            
+            <div class="highlight-box warning">
+                <strong>💡 数据保存位置：</strong>程序数据保存在 <code>C:\Users\你的用户名\.water-reminder\</code> 文件夹中，包括 records.json（记录）和 settings.json（设置）。即使卸载程序，这些数据也不会丢失。
+            </div>
+        </div>
+
+        <!-- 界面预览 -->
+        <div class="section">
+            <h2>🖼️ 界面预览</h2>
+            
+            <div class="screenshot-grid">
+                <!-- 主窗口 - 初始状态 -->
+                <div class="screenshot-container">
+                    <img src="screenshot-main1.png" alt="主窗口初始状态">
+                    <div class="screenshot-info">
+                        <strong>主窗口</strong> — 小巧桌面宠物，卡皮巴拉心情随喝水进度变化
+                    </div>
+                </div>
+                
+                <!-- 主窗口 - 目标设置 -->
+                <div class="screenshot-container">
+                    <img src="screenshot-main2.png" alt="目标设置面板">
+                    <div class="screenshot-info">
+                        <strong>每日目标</strong> — 点击 🎯 展开，自定义每日喝水目标
+                    </div>
+                </div>
+                
+                <!-- 主窗口 - 详细面板 -->
+                <div class="screenshot-container">
+                    <img src="screenshot-main3.png" alt="详细面板">
+                    <div class="screenshot-info">
+                        <strong>详细面板</strong> — 点击 📋 展开，设置提醒间隔 + 查看今日记录
+                    </div>
+                </div>
+                
+                <!-- 日历热力图 -->
+                <div class="screenshot-container">
+                    <img src="screenshot-calendar.png" alt="日历热力图">
+                    <div class="screenshot-info">
+                        <strong>日历热力图</strong> — 按月查看，颜色深浅表示水量，达标显示 🏆 徽章
+                    </div>
+                </div>
+                
+                <!-- 单日详情 -->
+                <div class="screenshot-container">
+                    <img src="screenshot-detail.png" alt="单日详情">
+                    <div class="screenshot-info">
+                        <strong>单日详情</strong> — 柱状图展示喝水时间分布，下方显示详细记录列表
+                    </div>
+                </div>
+                
+                <!-- 提醒弹窗 -->
+                <div class="screenshot-container">
+                    <img src="screenshot-reminder.png" alt="提醒弹窗">
+                    <div class="screenshot-info">
+                        <strong>提醒弹窗</strong> — 定时弹出，快速记录或"待会再喝"延后 5 分钟
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="section">
+            <h2>❓ 常见问题</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 点击程序没有反应？</div>
+                <div class="faq-answer">
+                    A: 程序启动后会最小化到系统托盘。请在屏幕右下角任务栏找到 🦫 图标，单击即可打开主窗口。如果找不到，可能是被折叠到隐藏图标中，点击任务栏的 ^ 箭头展开。
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 关闭提醒弹窗后程序也退出了？</div>
+                <div class="faq-answer">
+                    A: 放心，程序不会退出！关闭提醒弹窗只是关闭了弹窗窗口，主程序仍然在托盘运行。如果不小心关闭了主窗口，右键托盘图标 → "显示主窗口" 即可恢复。
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 换电脑后数据会丢失吗？</div>
+                <div class="faq-answer">
+                    A: 数据保存在当前电脑的 <code>C:\Users\你的用户名\.water-reminder\</code> 目录中。换电脑时，复制这个文件夹到新电脑相同位置即可保留全部数据。
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 可以修改每日目标吗？</div>
+                <div class="faq-answer">
+                    A: 可以！在详细面板（点击 📋 展开）中，找到"每日目标"输入框，修改为你想要的毫升数（默认 2000ml），点击保存即可。目标调整后，进度条和达标判定会同步更新。
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 为什么进度条显示不准确？</div>
+                <div class="faq-answer">
+                    A: 确保你的每日目标设置正确（默认 2000ml）。如果目标设得太高或太低，进度百分比看起来就会不准确。点击 📋 展开面板检查"每日目标"设置。
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 卡皮巴拉的心情会变化吗？</div>
+                <div class="faq-answer">
+                    A: 会！根据你的喝水进度，卡皮巴拉会有 5 种心情状态：开心（100%）、满足（50%）、期待（20%）、有点渴（10%）、很渴（0%）。多喝水让卡皮巴拉保持开心吧！
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何卸载？</div>
+                <div class="faq-answer">
+                    A: 直接删除 EXE 文件即可。程序没有注册表项，不会留下系统垃圾。如果想清除数据，额外删除 <code>.water-reminder</code> 文件夹。
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 支持 Mac 或 Linux 吗？</div>
+                <div class="faq-answer">
+                    A: 目前仅支持 Windows 10/11。由于使用了 Windows 特定的 API（如开机自启动、系统托盘），Mac 和 Linux 需要适配后才能运行。
+                </div>
+            </div>
+        </div>
+
+        <!-- 技术实现 -->
+        <div class="section">
+            <h2>⚙️ 技术实现</h2>
+            
+            <h3>技术栈</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">Python 3.8+</span>
+                <span class="tech-tag">PyQt5</span>
+                <span class="tech-tag">JSON</span>
+                <span class="tech-tag">Windows API</span>
+                <span class="tech-tag">PyInstaller</span>
+            </div>
+            
+            <h3>核心模块</h3>
+            <div class="highlight-box">
+                <strong>data_manager.py</strong> — 数据管理模块<br>
+                使用 JSON 文件存储喝水记录和设置，支持增删改查，记录包含 ID、时间戳、日期、水量。
+            </div>
+            <div class="highlight-box">
+                <strong>main_window.py</strong> — 主窗口模块<br>
+                无边框圆角窗口（FramelessWindowHint + WA_TranslucentBackground + paintEvent），
+                2×2 卡片布局 + 可展开详细面板，支持拖动、深色主题切换、连续天数计算、水位动画。
+            </div>
+            <div class="highlight-box">
+                <strong>reminder_dialog.py</strong> — 提醒弹窗模块<br>
+                置顶无边框弹窗，包含随机鼓励语、快速记录按钮、入场透明度动画（QPropertyAnimation）。
+            </div>
+            <div class="highlight-box">
+                <strong>calendar_heatmap.py</strong> — 日历热力图模块<br>
+                按月渲染日历格子，根据水量显示 5 级颜色（米色→浅绿→中绿→深绿→墨绿），
+                支持月份翻页、单日详情弹窗、月度统计（总量/达标天数/日均）。
+            </div>
+            <div class="highlight-box">
+                <strong>main.py</strong> — 应用入口<br>
+                QApplication 主循环，管理 QTimer 定时提醒器、系统托盘图标、弹窗生命周期。
+            </div>
+            
+            <h3>关键代码示例</h3>
+            <p><strong>定时提醒机制</strong></p>
+            <div class="code-block">
+<span class="comment"># 每 N 分钟触发一次提醒</span>
+<span class="keyword">self</span>.reminder_timer = QTimer(<span class="keyword">self</span>.app)
+<span class="keyword">self</span>.reminder_timer.timeout.connect(<span class="keyword">self</span>.show_reminder)
+<span class="keyword">self</span>.reminder_timer.start(interval * <span class="string">60</span> * <span class="string">1000</span>)  <span class="comment"># 毫秒</span>
+            </div>
+            
+            <p><strong>数据存储（JSON）</strong></p>
+            <div class="code-block">
+<span class="comment"># 记录结构</span>
+{
+    <span class="string">"id"</span>: <span class="string">1</span>,
+    <span class="string">"timestamp"</span>: <span class="string">"2026-06-29T14:30:00"</span>,
+    <span class="string">"date"</span>: <span class="string">"2026-06-29"</span>,
+    <span class="string">"amount_ml"</span>: <span class="string">250</span>,
+    <span class="string">"note"</span>: <span class="string">""</span>
+}
+            </div>
+            
+            <p><strong>无边框圆角窗口</strong></p>
+            <div class="code-block">
+<span class="comment"># 设置无边框 + 透明背景</span>
+<span class="keyword">self</span>.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool)
+<span class="keyword">self</span>.setAttribute(Qt.WA_TranslucentBackground)
+
+<span class="comment"># paintEvent 绘制圆角背景</span>
+<span class="keyword">def</span> paintEvent(<span class="keyword">self</span>, event):
+    painter = QPainter(<span class="keyword">self</span>)
+    painter.setRenderHint(QPainter.Antialiasing)
+    path = QPainterPath()
+    path.addRoundedRect(<span class="keyword">self</span>.rect(), <span class="string">24</span>, <span class="string">24</span>)
+    painter.fillPath(path, QColor(<span class="string">"#FFF8F0"</span>))
+            </div>
+            
+            <p><strong>连续天数算法</strong></p>
+            <div class="code-block">
+<span class="comment"># 从当天向前回溯，检查连续达标天数</span>
+<span class="keyword">def</span> get_streak_days(<span class="keyword">self</span>) -> <span class="keyword">int</span>:
+    records = <span class="keyword">self</span>.get_all_records()
+    goal = <span class="keyword">self</span>.get_daily_goal()
+    dates = {}
+    <span class="keyword">for</span> r <span class="keyword">in</span> records:
+        d = r.get(<span class="string">"date"</span>, <span class="string">""</span>)
+        <span class="keyword">if</span> d:
+            dates[d] = dates.get(d, <span class="string">0</span>) + r[<span class="string">"amount_ml"</span>]
+    
+    streak = <span class="string">0</span>
+    check = date.today().isoformat()
+    <span class="keyword">while</span> check <span class="keyword">in</span> dates <span class="keyword">and</span> dates[check] >= goal:
+        streak += <span class="string">1</span>
+        check = (datetime.fromisoformat(check).date() - 
+                 timedelta(days=<span class="string">1</span>)).isoformat()
+    <span class="keyword">return</span> streak
+            </div>
+            
+            <p><strong>DPI 高分辨率适配</strong></p>
+            <div class="code-block">
+<span class="comment"># 自动适配不同屏幕 DPI</span>
+QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, <span class="keyword">True</span>)
+QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, <span class="keyword">True</span>)
+            </div>
+            
+            <h3>打包方式</h3>
+            <p>使用 <strong>PyInstaller</strong> 将 Python 代码打包为单个 EXE 文件：</p>
+            <div class="code-block">
+python -m PyInstaller --name <span class="string">"卡皮巴拉-喝水小助手"</span> \
+    --onefile --windowed --noconfirm --clean main.py
+            </div>
+            <p>打包后所有依赖（Python 解释器、PyQt5、数据文件）被合并为单个 <code>.exe</code>，可直接在任意 Windows 电脑上运行。</p>
+            
+            <div class="highlight-box info">
+                <strong>📦 数据文件说明：</strong>程序运行时自动在用户目录创建 <code>.water-reminder/</code> 文件夹保存记录和设置，即使卸载程序数据也不会丢失。
+            </div>
+        </div>
+
+        <!-- 项目结构 -->
+        <div class="section">
+            <h2>📁 项目结构</h2>
+            <div class="code-block">
+water-reminder/
+├── main.py                    <span class="comment"># 入口文件（QApplication + 系统托盘）</span>
+├── main_window.py             <span class="comment"># 主窗口（UI + 交互逻辑）</span>
+├── reminder_dialog.py         <span class="comment"># 提醒弹窗（定时弹出）</span>
+├── calendar_heatmap.py          <span class="comment"># 日历热力图 + 详情弹窗</span>
+├── data_manager.py            <span class="comment"># 数据管理（JSON 读写）</span>
+├── assets/
+│   └── capybara.png           <span class="comment"># 卡皮巴拉图标（可选）</span>
+├── requirements.txt           <span class="comment"># 依赖：PyQt5, winshell, pywin32</span>
+├── build.py                   <span class="comment"># 打包脚本</span>
+└── 卡皮巴拉-喝水小助手.exe   <span class="comment"># 最终发布文件</span>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-pet">🦫</div>
+            <p>卡皮巴拉陪你养成喝水好习惯</p>
+            <p style="margin-top:8px; font-size:12px;">Made with 💧 by 卡皮巴拉喝水小助手</p>
+        </footer>
+    </div>
+</body>
+</html>
