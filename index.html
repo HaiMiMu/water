@@ -26,9 +26,9 @@
         
         header {
             text-align: center;
-            padding: 40px 0 30px;
+            padding: 24px 0 20px;
             border-bottom: 2px solid #E8D5C4;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
         
         .pet-icon {
@@ -383,7 +383,113 @@
             margin-bottom: 12px;
         }
         
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100vh;
+            background: #FFF8F0;
+            border-right: 2px solid #E8D5C4;
+            padding: 20px 16px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+        
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8B6F47;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E8D5C4;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            color: #5C4033;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar-nav a:hover {
+            background: #E8D5C4;
+            color: #8B6F47;
+        }
+        
+        .sidebar-nav .sub-nav {
+            list-style: none;
+            padding-left: 14px;
+            margin-top: 4px;
+        }
+        
+        .sidebar-nav .sub-nav li {
+            margin-bottom: 4px;
+        }
+        
+        .sidebar-nav .sub-nav a {
+            font-size: 13px;
+            padding: 4px 8px;
+            color: #8B6F47;
+        }
+        
+        .main-content {
+            margin-left: 200px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 24px;
+        }
+        
+        .preview-subsection {
+            margin-bottom: 24px;
+        }
+        
+        .preview-subsection-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8B6F47;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #E8D5C4;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .preview-grid .screenshot-container {
+            margin: 0;
+        }
+        
+        .preview-grid .screenshot-container img {
+            width: 100%;
+            display: block;
+        }
+        
         @media (max-width: 600px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
             h1 {
                 font-size: 28px;
             }
@@ -396,11 +502,35 @@
             .system-req {
                 grid-template-columns: 1fr;
             }
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <nav class="sidebar">
+        <div class="sidebar-title">📋 目录</div>
+        <ul class="sidebar-nav">
+            <li><a href="#download">⬇️ 下载</a></li>
+            <li><a href="#features">📋 功能介绍</a></li>
+            <li><a href="#requirements">🖥️ 系统要求</a></li>
+            <li><a href="#guide">🚀 使用指南</a></li>
+            <li>
+                <a href="#preview">🖼️ 界面预览</a>
+                <ul class="sub-nav">
+                    <li><a href="#preview-main">🦫 主窗口</a></li>
+                    <li><a href="#preview-calendar">📅 日历数据</a></li>
+                    <li><a href="#preview-reminder">⏰ 提醒弹窗</a></li>
+                </ul>
+            </li>
+            <li><a href="#faq">❓ 常见问题</a></li>
+            <li><a href="#tech">⚙️ 技术实现</a></li>
+            <li><a href="#structure">📁 项目结构</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div class="container">
         <header>
             <span class="pet-icon">🦫</span>
             <h1>卡皮巴拉喝水小助手</h1>
@@ -409,7 +539,7 @@
         </header>
 
         <!-- 下载区域 -->
-        <div class="section">
+        <div class="section" id="download">
             <h2>⬇️ 下载</h2>
             <div class="download-area">
                 <div style="font-size: 48px; margin-bottom: 12px;">💧</div>
@@ -430,7 +560,7 @@
         </div>
 
         <!-- 功能介绍 -->
-        <div class="section">
+        <div class="section" id="features">
             <h2>📋 功能介绍</h2>
             <p>卡皮巴拉喝水小助手是一款 Windows 桌面应用程序，以可爱的卡皮巴拉为主题，帮助你养成每天喝水的好习惯。</p>
             
@@ -448,7 +578,7 @@
                 <div class="feature-card">
                     <div class="icon">💧</div>
                     <h4>快速记录</h4>
-                    <p>100/250/500/1000ml 快速按钮 + 自定义水量，一键记录</p>
+                    <p>100/250/500ml 快速按钮 + 自定义水量，一键记录</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon">📊</div>
@@ -489,7 +619,7 @@
         </div>
 
         <!-- 系统要求 -->
-        <div class="section">
+        <div class="section" id="requirements">
             <h2>🖥️ 系统要求</h2>
             <div class="system-req">
                 <div class="req-item">
@@ -519,7 +649,7 @@
         </div>
 
         <!-- 使用指南 -->
-        <div class="section">
+        <div class="section" id="guide">
             <h2>🚀 使用指南</h2>
             <ol class="step-list">
                 <li>
@@ -528,7 +658,7 @@
                 </li>
                 <li>
                     <strong>记录喝水</strong><br>
-                    在主窗口点击 100/250/500/1000ml 快速按钮，或输入自定义水量后点击"记录"。记录后进度条会有水位上升动画，卡皮巴拉心情也会变化！
+                    在主窗口点击 100/250/500ml 快速按钮，或输入自定义水量后点击"记录"。记录后进度条会有水位上升动画，卡皮巴拉心情也会变化！
                 </li>
                 <li>
                     <strong>设置提醒间隔 & 目标</strong><br>
@@ -562,62 +692,69 @@
         </div>
 
         <!-- 界面预览 -->
-        <div class="section">
+        <div class="section" id="preview">
             <h2>🖼️ 界面预览</h2>
             
-            <div class="screenshot-grid">
-                <!-- 主窗口 - 初始状态 -->
-                <div class="screenshot-container">
-                    <img src="screenshot-main1.png" alt="主窗口初始状态">
-                    <div class="screenshot-info">
-                        <strong>主窗口</strong> — 小巧桌面宠物，卡皮巴拉心情随喝水进度变化
+            <!-- 主窗口预览 -->
+            <div class="preview-subsection" id="preview-main">
+                <div class="preview-subsection-title">🦫 主窗口预览</div>
+                <div class="preview-grid">
+                    <div class="screenshot-container">
+                        <img src="screenshot-main1.png" alt="主窗口初始状态">
+                        <div class="screenshot-info">
+                            <strong>初始状态</strong> — 卡皮巴拉心情随喝水进度变化
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshot-main2.png" alt="目标设置面板">
+                        <div class="screenshot-info">
+                            <strong>每日目标</strong> — 点击 🎯 展开自定义目标
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshot-main3.png" alt="详细面板">
+                        <div class="screenshot-info">
+                            <strong>详细面板</strong> — 设置提醒间隔 + 查看记录
+                        </div>
                     </div>
                 </div>
-                
-                <!-- 主窗口 - 目标设置 -->
-                <div class="screenshot-container">
-                    <img src="screenshot-main2.png" alt="目标设置面板">
-                    <div class="screenshot-info">
-                        <strong>每日目标</strong> — 点击 🎯 展开，自定义每日喝水目标
+            </div>
+            
+            <!-- 日历数据预览 -->
+            <div class="preview-subsection" id="preview-calendar">
+                <div class="preview-subsection-title">📅 日历数据预览</div>
+                <div class="preview-grid">
+                    <div class="screenshot-container">
+                        <img src="screenshot-calendar.png" alt="日历热力图">
+                        <div class="screenshot-info">
+                            <strong>日历热力图</strong> — 按月查看，颜色深浅表示水量
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshot-detail.png" alt="单日详情">
+                        <div class="screenshot-info">
+                            <strong>单日详情</strong> — 柱状图展示喝水时间分布
+                        </div>
                     </div>
                 </div>
-                
-                <!-- 主窗口 - 详细面板 -->
-                <div class="screenshot-container">
-                    <img src="screenshot-main3.png" alt="详细面板">
-                    <div class="screenshot-info">
-                        <strong>详细面板</strong> — 点击 📋 展开，设置提醒间隔 + 查看今日记录
-                    </div>
-                </div>
-                
-                <!-- 日历热力图 -->
-                <div class="screenshot-container">
-                    <img src="screenshot-calendar.png" alt="日历热力图">
-                    <div class="screenshot-info">
-                        <strong>日历热力图</strong> — 按月查看，颜色深浅表示水量，达标显示 🏆 徽章
-                    </div>
-                </div>
-                
-                <!-- 单日详情 -->
-                <div class="screenshot-container">
-                    <img src="screenshot-detail.png" alt="单日详情">
-                    <div class="screenshot-info">
-                        <strong>单日详情</strong> — 柱状图展示喝水时间分布，下方显示详细记录列表
-                    </div>
-                </div>
-                
-                <!-- 提醒弹窗 -->
-                <div class="screenshot-container">
-                    <img src="screenshot-reminder.png" alt="提醒弹窗">
-                    <div class="screenshot-info">
-                        <strong>提醒弹窗</strong> — 定时弹出，快速记录或"待会再喝"延后 5 分钟
+            </div>
+            
+            <!-- 提醒弹窗预览 -->
+            <div class="preview-subsection" id="preview-reminder">
+                <div class="preview-subsection-title">⏰ 提醒弹窗预览</div>
+                <div class="preview-grid">
+                    <div class="screenshot-container">
+                        <img src="screenshot-reminder.png" alt="提醒弹窗">
+                        <div class="screenshot-info">
+                            <strong>提醒弹窗</strong> — 快速记录或"待会再喝"延后 5 分钟
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 常见问题 -->
-        <div class="section">
+        <div class="section" id="faq">
             <h2>❓ 常见问题</h2>
             
             <div class="faq-item">
@@ -678,7 +815,7 @@
         </div>
 
         <!-- 技术实现 -->
-        <div class="section">
+        <div class="section" id="tech">
             <h2>⚙️ 技术实现</h2>
             
             <h3>技术栈</h3>
@@ -792,7 +929,7 @@ python -m PyInstaller --name <span class="string">"卡皮巴拉-喝水小助手"
         </div>
 
         <!-- 项目结构 -->
-        <div class="section">
+        <div class="section" id="structure">
             <h2>📁 项目结构</h2>
             <div class="code-block">
 water-reminder/
@@ -814,6 +951,7 @@ water-reminder/
             <p>卡皮巴拉陪你养成喝水好习惯</p>
             <p style="margin-top:8px; font-size:12px;">Made with 💧 by 卡皮巴拉喝水小助手</p>
         </footer>
+    </div>
     </div>
 </body>
 </html>
